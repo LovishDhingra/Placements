@@ -1,0 +1,120 @@
+4 Problems, 1 solution. Java solutions for Combinations. Combination Sum1, Combination Sum2, Combination Sum3.
+
+
+Combinations
+
+public List<List<Integer>> combine(int n, int k) {
+		List<List<Integer>> result = new ArrayList<>();
+		if(n < 1 || k < 1 || k > n) {
+			return result;
+		}
+		List<Integer> curPath = new ArrayList<>();
+		dfs(n, k, curPath, 1, result);
+		return result;
+	}
+
+	public static void dfs(int n, int k, List<Integer> curPath, int start, 
+List<List<Integer>> result) {
+		if(k == curPath.size()) {
+			result.add(new ArrayList<Integer>(curPath));
+			return;
+		}
+		if(n < 0) {
+			return;
+		}
+
+		for(int i = start; i <= n; ++i) {
+			curPath.add(i);
+			dfs(n, k, curPath, i+1, result);
+			curPath.remove(curPath.size() - 1);
+		}
+	}
+CombinationSum1
+
+    public static List<List<Integer>> combinationSum(int[] nums, int target) {
+		List<List<Integer>> result = new ArrayList<>();
+		if(nums == null || nums.length == 0) {
+			return result;
+		}
+		Arrays.sort(nums);
+		List<Integer> curPath = new ArrayList<>();
+		dfs(nums, target, curPath, 0, result);
+		return result;
+	}
+
+	public static void dfs(int[] nums, int target, List<Integer> curPath, int start, List<List<Integer>> result) {
+		if(target == 0) {
+			result.add(new ArrayList<Integer>(curPath));
+			return;
+		}
+		if(target < 0) {
+			return;
+		}
+
+		for(int i = start; i < nums.length; ++i) {
+			curPath.add(nums[i]);
+			dfs(nums, target - nums[i], curPath, i, result);
+			curPath.remove(curPath.size() - 1);
+		}
+	}
+CombinationSum2
+
+
+    public List<List<Integer>> combinationSum2(int[] nums, int target) {
+		List<List<Integer>> result = new ArrayList<>();
+		if(nums == null || nums.length == 0) {
+			return result;
+		}
+		Arrays.sort(nums);
+		List<Integer> curPath = new ArrayList<>();
+		dfs(nums, target, curPath, 0, result);
+		return result;
+	}
+
+	public static void dfs(int[] nums, int target, List<Integer> curPath, int start, List<List<Integer>> result) {
+		if(target == 0) {
+			result.add(new ArrayList<Integer>(curPath));
+			return;
+		}
+		if(target < 0) {
+			return;
+		}
+
+		for(int i = start; i < nums.length; ++i) {
+		    if (i > start && nums[i] == nums[i-1]) {
+				continue;
+			}
+			curPath.add(nums[i]);
+			dfs(nums, target - nums[i], curPath, i+1, result);
+			curPath.remove(curPath.size() - 1);
+		}
+	}
+
+CombinationSum3
+
+
+    public static List<List<Integer>> combinationSum3(int k, int n) {
+		List<List<Integer>> result = new ArrayList<>();
+		if(n < 1 || k < 1 || k > n) {
+			return result;
+		}
+		List<Integer> curPath = new ArrayList<>();
+		dfs(n, k, curPath, 1, result);
+		return result;
+	}
+
+	public static void dfs(int n, int k, List<Integer> curPath, int start, List<List<Integer>> result) {
+		if(k == curPath.size() && n == 0) {
+			result.add(new ArrayList<Integer>(curPath));
+			return;
+		}
+		if(n < 0) {
+			return;
+		}
+
+		for(int i = start; i <= 9; ++i) {
+			curPath.add(i);
+			dfs(n - i, k, curPath, i+1, result);
+			curPath.remove(curPath.size() - 1);
+		}
+	}

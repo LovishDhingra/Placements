@@ -1,0 +1,92 @@
+An interface in Java is a blueprint of a class.
+ It is used to achieve abstraction and multiple inheritance in Java.
+ we cannot make objects of interfaces
+ class extends one class but not more than one class(Multiple inheritance)
+ class implements interface 
+ a single class can implements multiple interfaces
+ interfaces extends interfaces
+ in interface every data member in interface is by default declared as static and final
+ in interface every member function is declared as public and abstract by java compiler 
+ SINCE  java 9 we can have private methods in interface
+ interface can be used to achieve loose coupling.
+
+ eg: 
+ interface printable{  
+void print();  
+}  
+class A6 implements printable{  
+public void print(){System.out.println("Hello");}  
+  
+public static void main(String args[]){  
+A6 obj = new A6();  
+obj.print();  
+ }  
+}  
+
+
+Multiple interfaces
+
+interface Printable{  
+void print();  
+}  
+interface Showable{  
+void show();  
+}  
+class A7 implements Printable,Showable{  
+public void print(){System.out.println("Hello");}  
+public void show(){System.out.println("Welcome");}  
+  
+public static void main(String args[]){  
+A7 obj = new A7();  
+obj.print();  
+obj.show();  
+ }  
+}  
+
+ multiple inheritance is not supported in the case of class because of ambiguity. 
+ However, it is supported in case of an interface because there is no ambiguity. It is because its implementation is provided by the implementation class.
+
+
+Since Java 8, we can have method body in interface. But we need to make it default method. Let's see an example:
+
+
+
+interface Drawable{  
+void draw();  
+default void msg(){System.out.println("default method");}  
+}  
+class Rectangle implements Drawable{  
+public void draw(){System.out.println("drawing rectangle");}  
+}  
+class TestInterfaceDefault{  
+public static void main(String args[]){  
+Drawable d=new Rectangle();  
+d.draw();  
+d.msg();  
+}}  
+
+
+we can accces static data members or member function by using class name
+
+
+Q) What is marker or tagged interface?
+An interface which has no member is known as a marker or tagged interface, for example, Serializable, Cloneable, Remote, etc. They are used to provide some essential information to the JVM so that JVM may perform some useful operation.
+
+//How Serializable interface is written?  
+public interface Serializable{  
+}  
+
+
+Nested Interface in Java
+Note: An interface can have another interface which is known as a nested interface. We will learn it in detail in the nested classes chapter. For example:
+
+interface printable{  
+ void print();  
+ interface MessagePrintable{  
+   void msg();  
+ }  
+}  
+
+
+we cannot make a constructor in interface
+. A class that implements an interface must implement all the methods declared in the interface.
