@@ -1,0 +1,71 @@
+Map is used to convert the array into another array 
+The Array map() function in JavaScript is used to create a new array with a given array, 
+by executing a function for all the elements in the given array.
+In react js Each value stored in the map is mapped to a unique key. 
+Thus a duplicate pair is not allowed in a map thus it offers a fast searching of data.
+map function is applied when it is necessary to call a function for every element of an array.
+
+import React from 'react';   
+import ReactDOM from 'react-dom';   
+function example(props) {  
+const names = props.names;  
+const nameList = names.map((name) =>  
+<li>{name}</li>  
+);  
+return (  
+<div>  
+<h2>Name List:</h2>  
+<ul>{nameList}</ul>  
+</div>  
+);  
+}  
+const names = ['Ali', 'Bond', 'Catherine', 'David', 'Don'];   
+ReactDOM.render(  
+<example names={names} />,  
+document.getElementById('app')  
+);  
+export default App;
+***********************************************************************
+
+import React from 'react';
+import Details from './Details';
+import PersonDetails from './PersonDetails'
+import './App.css';
+function App() {
+   const PersonNames = PersonDetails.map(person => 
+                          <Details key={person.id} p={person} />)
+   return (
+      <div>
+         {PersonNames}
+      </div>
+   )
+}
+export default App;
+*********************************************************************
+var nums = [64, 45, 11, 5];
+
+function multiplyElement(num) {
+    return num * document.getElementById("multiplyBy").value;
+}
+
+function mapFunction() {
+    document.getElementById("result").innerHTML = nums.map(multiplyElement);
+}
+
+********************************************************************************
+The complete map() method syntax
+The syntax for the map() method is as follows:
+
+arr.map(function(element, index, array){  }, this);
+
+The callback function() is called on each array element,
+ and the map() method always passes the current element, 
+the index of the current element, and the whole array object to it.
+********************************************************
+The this argument will be used inside the callback function. By default, its value is undefined . For example, here's how to change the this value to the number 80:
+
+let arr = [2, 3, 5, 7]
+
+arr.map(function(element, index, array){
+	console.log(this) // 80
+}, 80);
