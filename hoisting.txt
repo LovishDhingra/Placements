@@ -1,0 +1,12 @@
+hoisting means using the variables or function before actually decalring them 
+hoisting cannot be used in case of let and const 
+cannot be used for inititliazatios 
+ie . console.log(c);
+var c=5; // can't work
+
+ie . 
+c=5;
+console.log(c);
+var c; // will work output will be undefined
+
+
